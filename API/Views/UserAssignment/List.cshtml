@@ -1,0 +1,20 @@
+﻿@model UserAssignmentListViewModel
+    <div class="container">
+        @foreach (var userAssignment in Model.AllUserAssignments)
+        {
+            int time = DateTime.Now.CompareTo(userAssignment.Assignment.EndTime);
+            if (userAssignment.IsCompleted || time == 1)
+            {
+                <div class="alert alert-warning mt-3">
+                    <b>Assigmnent:</b> @userAssignment.Assignment.Name<br />
+                    <b>Start Time:</b> @userAssignment.Assignment.StartTime<br />
+                    <b>End Time:</b> @userAssignment.Assignment.EndTime<br />
+                    <p>
+                        <a class="btn btn-sm btn-primary" asp-controller="UserAssignment"
+                           asp-action="ShowUserAssignment" asp-route-id="@userAssignment.Id">Check</a>
+                    </p>
+                </div>
+            }
+        }
+        <br />
+    </div>

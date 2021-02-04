@@ -1,0 +1,12 @@
+﻿@model AssignmentListViewModel
+<div class="container">
+    @foreach (var assignment in Model.AllAssignments)
+    {
+    <div class="alert alert-warning mt-3">
+        <b>Assigmnent:</b> @assignment.Name<br />
+        <b>Start Time:</b> @assignment.StartTime<br />
+        <b>End Time:</b> @assignment.EndTime<br />
+        <p><a class="btn btn-sm btn-primary" asp-controller="Assignment" asp-action="ShowAssignment" asp-route-id="@assignment.Id">Details</a></p>
+    </div>
+    }
+</div>

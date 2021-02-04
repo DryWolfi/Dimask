@@ -1,0 +1,17 @@
+﻿@model UserAssignmentListViewModel
+<div class="container">
+    <div>
+        <b>Assigmnent:</b> @Model.CurrAssignment.Name<br />
+        <b>User:</b> @Model.Worker.UserName<br />
+        <b>Start Time:</b> @Model.CurrAssignment.StartTime<br />
+        <b>End Time:</b> @Model.CurrAssignment.EndTime<br />
+        @{
+            long duration = Model.CurrAssignment.EndTime.Ticks - Model.CurrAssignment.StartTime.Ticks;
+            long passed = DateTime.Now.Ticks - Model.CurrAssignment.StartTime.Ticks;
+        }
+        <label for="task">Assignment time:</label>
+        <progress id="task" max=@duration value=@passed></progress><br />
+        <b>Detail:</b> @Model.CurrAssignment.Description<br />
+        <b>Solution:</b> @Model.UserAssignment.Text<br />
+    </div>
+</div>

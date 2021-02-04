@@ -1,0 +1,22 @@
+﻿@model IEnumerable<DAL.Models.User>
+@{
+    ViewBag.Title = "Users List";
+}
+
+<a asp-action="Create">Add user</a>
+
+<table class="table">
+    <tr><th>Email</th><th></th></tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Email</td>
+            <td>
+                <form asp-action="Delete" asp-route-id="@user.Id" method="post">
+                    <a class="btn btn-sm btn-primary" asp-controller="Assignment" asp-action="AddList" asp-route-userId="@user.Id">Add assignmnt</a>
+                    <a class="btn btn-sm btn-primary" asp-controller="User" asp-action="Edit" asp-route-userId="@user.Id">Edit</a>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

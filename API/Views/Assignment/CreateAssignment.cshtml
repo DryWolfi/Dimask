@@ -1,0 +1,33 @@
+﻿@model AssignmentDTO
+    <h3>Assignment Details</h3>
+    <form asp-action="CreateAssignment" method="post">
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <div class="col-md-5">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description"></label><br />
+            <div class="col-md-5">
+                <textarea rows="3" class="form-control" asp-for="Description"></textarea>
+                <span asp-validation-for="Description"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="StartTime"></label>
+            <div class="col-md-5">
+                <input asp-for="StartTime" class="form-control"/>
+                <span asp-validation-for="StartTime"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="EndTime"></label>
+            <div class="col-md-5">
+                <input asp-for="EndTime" class="form-control"/>
+                <span asp-validation-for="EndTime"></span>
+            </div>
+        </div>
+        <input class="btn btn-success" type="submit" value="Create" />
+    </form>

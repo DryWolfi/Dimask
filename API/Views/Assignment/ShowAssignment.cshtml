@@ -1,0 +1,26 @@
+﻿@model AssignmentListViewModel
+<div class="container">
+    <div>
+        <b>Assigmnent:</b> @Model.CurrAssignment.Name<br />
+        <b>Start Time:</b> @Model.CurrAssignment.StartTime<br />
+        <b>End Time:</b> @Model.CurrAssignment.EndTime<br />
+        @{
+            long duration = Model.CurrAssignment.EndTime.Ticks - Model.CurrAssignment.StartTime.Ticks;
+            long passed = DateTime.Now.Ticks - Model.CurrAssignment.StartTime.Ticks;
+            int time = DateTime.Now.CompareTo(Model.CurrAssignment.EndTime);
+        }
+        <label for="task">Assignment time:</label>
+        <progress id="task" max=@duration value=@passed></progress><br />
+        <b>Detail:</b> @Model.CurrAssignment.Description<br />
+        @if (time != 1)
+        {
+            <form asp-action="ShowAssignment" method="post">
+                <div class="form-group">
+                    <label asp-for="Text"></label><br />
+                    <textarea rows="3" class="form-control" asp-for="Text"></textarea><span asp-validation-for="Text"></span>
+                </div>
+                <input class="btn btn-success" type="submit" asp-route-assignmentId="@Model.CurrAssignment.Id" value="Enter Solution" />
+            </form>
+        }
+    </div>
+</div>
