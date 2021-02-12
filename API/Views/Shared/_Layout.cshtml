@@ -19,12 +19,12 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Assignments" asp-action="List">Assignments</a>
                     </li>
-                    @if (User.IsInRole("moderator") || User.IsInRole("admin"))
+                    @if (User.IsInRole("moderator") || User.IsInRole("admin") || User.IsInRole("guest"))
                     {
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="UserAssignment" asp-action="List">Checkout</a>
                         </li>
-                        @if (User.IsInRole("admin"))
+                        @if (User.IsInRole("admin") || User.IsInRole("guest"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="Users" asp-action="Index">Users</a>

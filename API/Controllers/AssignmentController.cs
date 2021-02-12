@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
-    [Authorize(Roles = "moderator, admin")]
+    //[Authorize(Roles = "moderator, admin")]
     public class AssignmentController : Controller
     {
         private readonly IAssignmentService _Assignment;
